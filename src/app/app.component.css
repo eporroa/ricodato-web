@@ -1,5 +1,5 @@
-*{
-  font-family: Roboto, sans-serif;
+.header{
+  margin: 1vh 0;
 }
 .sebm-google-map-container {
   height: 300px;

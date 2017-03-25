@@ -13,21 +13,18 @@ export class AppComponent {
   lat: number = 0;
   lng: number = 0;
   title: string = 'El Rico Dato';
+  isLoggedIn: boolean;
 
   private limit: Subject<number> = new Subject<number>();
-
-  isLoggedIn: boolean;
+  
   constructor(
     public afService: AngularFireAuthService,
     private router: Router
   ) {
-    // This asynchronously checks if our user is logged it and will automatically
-    // redirect them to the Login page when the status changes.
-    // This is just a small thing that Firebase does that makes it easy to use.
+
     this.afService.af.auth.subscribe(
       (auth) => {
         if(auth == null) {
-          this.router.navigate(['login']);
           this.isLoggedIn = false;
         }
         else {
@@ -59,6 +56,13 @@ export class AppComponent {
     // setTimeout(() => {
     //   af.database.object(`test/i0`).set(random);
     // }, 6000);
+  }
+  login() {
+    console.log(this.afService.loginWithGoogle);
+    this.afService.loginWithGoogle().then((data) => {
+      console.log(data);
+      this.isLoggedIn = true;
+    })
   }
   logout() {
     this.afService.logout();
