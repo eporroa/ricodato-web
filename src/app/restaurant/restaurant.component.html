@@ -1,8 +1,15 @@
-<form>
+<ul>
+  <li *ngFor="let restaurant of restaurantes | async">
+    {{ restaurant.$value }}
+  </li>
+</ul>
+
+<form >
   <h3>Ingresar Restaurant</h3>
 
-  <input #restName type="text" class="form-control" placeholder="Nombre Restaurant" ><br>
-  <input #restPicture type="text" class="form-control" placeholder="Foto Restaurant" ><br>
-  <input #restLat type="hidden" class="form-control" placeholder="Latitud" ><br>
-  <input #restLong type="hidden" class="form-control" placeholder="Longitud" ><br>
+  <input name="restName" type="text" class="form-control" placeholder="Nombre Restaurant" ><br>
+  <input name="restPicture" type="text" class="form-control" placeholder="Foto Restaurant" ><br>
+  <input name="restLat" type="hidden" class="form-control" placeholder="Latitud" ><br>
+  <input name="restLong" type="hidden" class="form-control" placeholder="Longitud" ><br>
+  <button>Guardar</button>
 </form>

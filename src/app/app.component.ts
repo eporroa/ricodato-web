@@ -35,32 +35,9 @@ export class AppComponent {
     );
 
     this.getLocation();
-
-    // af.database.list(`items`, {
-    //   query: {
-    //     limitToFirst: this.limit
-    //   }
-    // }).subscribe((val) => console.log(val));
-
-    // this.limit.next(1);
-
-    // setTimeout(() => {
-    //   this.limit.next(2);
-    // }, 2000);
-
-    // setTimeout(() => {
-    //   this.limit.next(3);
-    // }, 4000);
-
-    // let random = Math.floor(Math.random() * 10);
-    // setTimeout(() => {
-    //   af.database.object(`test/i0`).set(random);
-    // }, 6000);
   }
   login() {
-    console.log(this.afService.loginWithGoogle);
     this.afService.loginWithGoogle().then((data) => {
-      console.log(data);
       this.isLoggedIn = true;
     })
   }
@@ -79,9 +56,5 @@ export class AppComponent {
   geolocationCallback(location){    
     this.lat = location.coords.latitude;
     this.lng = location.coords.longitude;
-
-    /*let geoFire = GeoFire;
-    console.log(geoFire);*/
-    //new GeoFire(this.af.database.list('/items_location')._ref);
   }
 }
